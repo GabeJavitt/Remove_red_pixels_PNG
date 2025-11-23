@@ -30,55 +30,8 @@ pip install numpy Pillow
 ## 🚀 Usage
 
 ### 1. The Script
-Save the following code as a file named `dms_cleaner.py`.
+Clone the code as a file named `dms_cleaner.py`.
 
-```python
-import sys
-import numpy as np
-from PIL import Image
-
-def process_image(input_path, output_path):
-    print(f"Processing: {input_path}...")
-    
-    # Open image and convert to RGB
-    try:
-        img = Image.open(input_path).convert('RGB')
-    except FileNotFoundError:
-        print("Error: File not found.")
-        return
-
-    # Capture metadata (DPI) to ensure print quality stays high
-    original_dpi = img.info.get('dpi', (300, 300))
-    
-    data = np.array(img)
-    
-    # --- CONFIGURATION ---
-    # Target: Red pixels (High Red, Low Green/Blue)
-    # Adjust these numbers if your red is darker or washed out
-    red_channel = data[:, :, 0]
-    green_channel = data[:, :, 1]
-    blue_channel = data[:, :, 2]
-    
-    is_red_pixel = (red_channel > 150) & (green_channel < 100) & (blue_channel < 100)
-    
-    # Replacement Color: Light Gray (RGB)
-    new_color = (220, 220, 220) 
-    # ---------------------
-
-    # Apply the mask
-    data[is_red_pixel] = new_color
-
-    # Save as PNG (Lossless)
-    new_img = Image.fromarray(data)
-    new_img.save(output_path, format='PNG', dpi=original_dpi, optimize=True)
-    print(f"Success! Saved to: {output_path}")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python dms_cleaner.py <input_file> <output_file>")
-    else:
-        process_image(sys.argv[1], sys.argv[2])
-```
 
 ### 2. Running the Command
 Open your terminal or command prompt and run:
