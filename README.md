@@ -74,6 +74,7 @@ if __name__ == "__main__":
         print("Usage: python dms_cleaner.py <input_file> <output_file>")
     else:
         process_image(sys.argv[1], sys.argv[2])
+
 ## 2. Running the Command
 Open your terminal or command prompt and run:
 python dms_cleaner.py original_heatmap.png clean_heatmap.png
