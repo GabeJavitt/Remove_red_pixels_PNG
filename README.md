@@ -1,6 +1,6 @@
 # DMS Heatmap Desaturator
 
-A lightweight Python utility for Deep Mutational Scanning (DMS) visualization. This tool programmatically detects high-contrast red blocks (often used to signify stop codons or missing data) in heatmaps and replaces them with a neutral color.
+A lightweight Python utility for Deep Mutational Scanning (DMS) visualization. This tool programmatically detects high-contrast red blocks (often used to signify stop codons or missing data) in heatmaps and replaces them with a neutral color. 
 
 It is designed specifically for scientific figures, ensuring **lossless quality** and preserving original **DPI metadata**.
 
@@ -25,10 +25,14 @@ This project relies on `Pillow` (PIL) for image handling and `NumPy` for fast ma
 
 ```bash
 pip install numpy Pillow
+```
 
-🚀 Usage
-1. The Script
-Save the following code as a file named dms_cleaner.py.
+## 🚀 Usage
+
+### 1. The Script
+Save the following code as a file named `dms_cleaner.py`.
+
+```python
 import sys
 import numpy as np
 from PIL import Image
@@ -74,16 +78,22 @@ if __name__ == "__main__":
         print("Usage: python dms_cleaner.py <input_file> <output_file>")
     else:
         process_image(sys.argv[1], sys.argv[2])
+```
 
-## 2. Running the Command
+### 2. Running the Command
 Open your terminal or command prompt and run:
+
+```bash
 python dms_cleaner.py original_heatmap.png clean_heatmap.png
+```
 
 ## 🎨 Customization
-To change the output color, modify the new_color tuple in the script:
-•	Dark Gray: (100, 100, 100)
-•	White (Invisible): (255, 255, 255)
-•	Muted Orange: (210, 150, 100)
-📄 License
-This project is open source and available under the MIT License.
 
+To change the output color, modify the `new_color` tuple in the script:
+
+* **Dark Gray:** `(100, 100, 100)`
+* **White (Invisible):** `(255, 255, 255)`
+* **Muted Orange:** `(210, 150, 100)`
+
+## 📄 License
+This project is open source and available under the MIT License.
